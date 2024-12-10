@@ -73,11 +73,15 @@ async function findMatchingTutors(studentId) {
   }
 
   export {
-    findMatchingTutors
+    findMatchingTutors,
+    sortTutors
   }
+
+
 
 /***************************** EXAMPLE USAGE *************************** */
 // An idea of what it might look like to use the above function in our frontend
+/*
 import React, { useState, useEffect } from 'react';
 import { findMatchingTutors } from '../scheduling/matching.js';
 
@@ -109,3 +113,4 @@ const MatchingTutors = ({ studentId }) => {
     getTutors();
   }, [studentId]);
 };
+*/

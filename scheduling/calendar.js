@@ -205,8 +205,6 @@ async function tutorAvailability(tutorId, dayOfWeek, startTime, endTime) {
     const availableStart = moment.utc(slot.start_time, "HH:mm:ss").format("HH:mm:ss");
     const availableEnd = moment.utc(slot.end_time, "HH:mm:ss").format("HH:mm:ss");
 
-    console.log("Comparing:", { startUTC, endUTC, availableStart, availableEnd });
-
     // Check if the requested times fall within the availability range
     if (startUTC >= availableStart && endUTC <= availableEnd) {
       return true;
@@ -418,7 +416,10 @@ async function removeTimeOff(tutorId, date) {
       .eq("tutor_id", tutorId)
       .eq("date", date);
 
-    if (error) throw error;
+    if (error) {
+      console.error("Error removing time-off:", error.message);
+      throw new Error(error.message); 
+    }
   } catch (error) {
     console.error("Error removing time-off:", error.message);
     throw error;
